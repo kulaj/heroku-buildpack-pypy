@@ -48,7 +48,7 @@ indent() {
 }
 
 function virtualenv (){
-  $PYPY_DIR/bin/pypy "$ROOT_DIR/src/virtualenv-1.7/virtualenv.py" "$@"
+  $PYPY_DIR/bin/pypy3 "$ROOT_DIR/src/virtualenv-1.7/virtualenv.py" "$@"
 }
 
 # Reject a non-packaged Django app.
@@ -72,7 +72,7 @@ set +e
 echo "-----> Preparing virtualenv version $(virtualenv --version)"
 
 # Try to create the virtualenv.
-OUT=$(virtualenv --distribute --never-download -p $PYPY_DIR/bin/pypy --prompt=venv . 2>&1)
+OUT=$(virtualenv --distribute --never-download -p $PYPY_DIR/bin/pypy3 --prompt=venv . 2>&1)
 echo "$OUT" | indent
 
 set -e
