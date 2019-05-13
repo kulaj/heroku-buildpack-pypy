@@ -15,7 +15,7 @@ PYPY_DIR=$CACHE_DIR/pypy-1.8
 NAME=$($BIN_DIR/detect $BUILD_DIR)
 PIP_DOWNLOAD_CACHE=${PIP_DOWNLOAD_CACHE:-$CACHE_DIR/pip_downloads}
 VENDORED_MEMCACHED="http://cl.ly/0a191R3K160t1w1P0N25/vendor-libmemcached.tar.gz"
-VENDORED_PYPY="https://bitbucket.org/pypy/pypy/downloads/pypy-1.8-linux64.tar.bz2"
+VENDORED_PYPY="https://bitbucket.org/pypy/pypy/downloads/pypy3.6-v7.1.1-linux64.tar.bz2"
 
 unset GIT_DIR
 export PIP_DOWNLOAD_CACHE
@@ -27,17 +27,17 @@ mkdir -p $PIP_DOWNLOAD_CACHE
 # Install pypy-1.8 in CACHE_DIR. Always rebuild it in case something has
 # effed up the CACHE_DIR/pypy-1.8 dir, but keep the tarball around so we don't
 # have to re-download.
-if [ ! -f "$CACHE_DIR/pypy-1.8-linux64.tar.bz2" ]; then
+if [ ! -f "$CACHE_DIR/pypy3.6-v7.1.1-linux64.tar.bz2" ]; then
     cd $CACHE_DIR
-    echo "-----> Downloading pypy-1.8"
+    echo "-----> Downloading pypy3.6-v7.1.1"
     curl -sLO $VENDORED_PYPY
 else
-    echo "-----> pypy-1.8 in cache"
+    echo "-----> pypy3.6-v7.1.1 in cache"
 fi
 cd $CACHE_DIR
 rm -fr pypy-1.8
 mkdir pypy-1.8
-tar -jxf $CACHE_DIR/pypy-1.8-linux64.tar.bz2 -C $PYPY_DIR --strip-components 1
+tar -jxf $CACHE_DIR/pypy3.6-v7.1.1-linux64.tar.bz2 -C $PYPY_DIR --strip-components 1
 ##########
 
 cd $BUILD_DIR
@@ -125,14 +125,14 @@ popd &> /dev/null
 # /pypy fixes #####
 
 # remove "tests" dir from pypy sources
-rm -fr $BUILD_DIR/lib-python/2.7/test/
-rm -fr $BUILD_DIR/lib-python/2.7/lib2to3/tests/
-rm -fr $BUILD_DIR/lib-python/modified-2.7/test/
-rm -fr $BUILD_DIR/lib-python/modified-2.7/lib2to3/tests/
+# rm -fr $BUILD_DIR/lib-python/2.7/test/
+# rm -fr $BUILD_DIR/lib-python/2.7/lib2to3/tests/
+# rm -fr $BUILD_DIR/lib-python/modified-2.7/test/
+# rm -fr $BUILD_DIR/lib-python/modified-2.7/lib2to3/tests/
 rm -fr $BUILD_DIR/lib_pypy/pypy_test/
 
 # Clean up pypy source dir in $CACHE_DIR.
-rm -fr $CACHE_DIR/pypy-1.8
+#rm -fr $CACHE_DIR/pypy-1.8
 rm -fr $CACHE_DIR/bin
 rm -fr $CACHE_DIR/include
 rm -fr $CACHE_DIR/lib-python
