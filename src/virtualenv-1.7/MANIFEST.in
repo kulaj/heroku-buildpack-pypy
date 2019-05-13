@@ -1,9 +1,22 @@
-recursive-include docs *.txt
-recursive-include scripts *
-recursive-include virtualenv_support *.egg *.tar.gz
-recursive-exclude virtualenv_support *.py
-recursive-exclude docs/_templates *.*
+include virtualenv.py
+recursive-include virtualenv_support *.whl
+recursive-include virtualenv_embedded *
 include virtualenv_support/__init__.py
-include *.py
+include pyproject.toml
+
 include AUTHORS.txt
 include LICENSE.txt
+
+recursive-include tests *
+recursive-include docs *
+include tasks/*
+include tox.ini
+
+exclude readthedocs.yml
+exclude CONTRIBUTING.rst
+exclude .pre-commit-config.yaml
+exclude azure-run-tox-env.yml
+exclude azure-pipelines.yml
+exclude .gitignore
+exclude .gitattributes
+recursive-exclude .github *
