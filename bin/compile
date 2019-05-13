@@ -10,7 +10,7 @@ BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 ROOT_DIR=$(dirname $BIN_DIR)
 BUILD_DIR=$1
 CACHE_DIR=$2
-PYPY_DIR=$CACHE_DIR/pypy-1.8
+PYPY_DIR=$CACHE_DIR/pypy3.6-v7.1.1
 
 NAME=$($BIN_DIR/detect $BUILD_DIR)
 PIP_DOWNLOAD_CACHE=${PIP_DOWNLOAD_CACHE:-$CACHE_DIR/pip_downloads}
@@ -35,8 +35,8 @@ else
     echo "-----> pypy3.6-v7.1.1 in cache"
 fi
 cd $CACHE_DIR
-rm -fr pypy-1.8
-mkdir pypy-1.8
+rm -fr pypy3.6-v7.1.1
+mkdir pypy3.6-v7.1.1
 tar -jxf $CACHE_DIR/pypy3.6-v7.1.1-linux64.tar.bz2 -C $PYPY_DIR --strip-components 1
 ##########
 
