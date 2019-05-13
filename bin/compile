@@ -94,7 +94,7 @@ fi
 
 # Install dependencies.
 echo "-----> Installing dependencies using pip version $(pip --version | awk '{print $2}')"
-pip install --use-mirrors -r requirements.txt --src ./.heroku/src | indent
+pip install -r requirements.txt --src ./.heroku/src | indent
 
 # Django support.
 if [ "$NAME" = "Python/Django" ]; then
