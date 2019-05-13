@@ -145,4 +145,6 @@ find $BUILD_DIR -name "*.pyc" -delete
 #echo "-----> Compiling .pyc files"
 #pypy -m compileall -fq $BUILD_DIR
 
+/sbin/ldconfig -v
+
 exit 0
